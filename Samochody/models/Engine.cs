@@ -7,6 +7,6 @@
         public int Cylinders { get; set; }
         public int FuelTypeID { get; set; }
         public FuelType FuelType { get; set; }
-        public string DisplayName => $"{Horsepower}Hp - {Capacity}L - {FuelType.Name}";
+        public string DisplayEngineInfo => $"{Horsepower}Hp - {Capacity}L - {FuelType.Name}";
     }
 }

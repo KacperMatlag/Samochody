@@ -20,4 +20,10 @@
   <ItemGroup>
     <Folder Include="dtos\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="pages\AddEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

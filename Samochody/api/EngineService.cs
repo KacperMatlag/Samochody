@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Samochody.dtos;
 using Samochody.models;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace Samochody.api {
         }
 
         // Dodaj nowy silnik
-        public async Task<Engine> CreateEngineAsync(Engine engine) {
+        public async Task<Engine> CreateEngineAsync(EngineDto engine) {
             try {
                 var jsonContent = JsonConvert.SerializeObject(engine);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
@@ -48,7 +49,7 @@ namespace Samochody.api {
         }
 
         // Zaktualizuj istniejący silnik
-        public async Task<Engine> UpdateEngineAsync(int engineId, Engine engine) {
+        public async Task<Engine> UpdateEngineAsync(int engineId, EngineDto engine) {
             try {
                 var jsonContent = JsonConvert.SerializeObject(engine);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");

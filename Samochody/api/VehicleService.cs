@@ -48,21 +48,7 @@ namespace Samochody.api {
         // Dodaj nowy pojazd
         public async Task<Vehicle> CreateVehicleAsync(VehicleDto dto) {
             try {
-                var vehicle = new Vehicle() {
-                    Model = dto.Model,
-                    Year = dto.Year,
-                    Color = dto.Color,
-                    GearboxID = dto.GearboxID,
-                    Mileage = dto.Mileage,
-                    EngineID = dto.EngineID,
-                    SeatingCapacity = dto.SeatingCapacity,
-                    BodyType = dto.BodyType,
-                    VIN = dto.VIN,
-                    Price = dto.Price,
-                    VehicleTypeID = dto.VehicleTypeID
-                };
-
-                var jsonContent = JsonConvert.SerializeObject(vehicle);
+                var jsonContent = JsonConvert.SerializeObject(dto);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
                 var response = await _httpClient.PostAsync($"{_url}vehicle", content);
@@ -79,21 +65,7 @@ namespace Samochody.api {
         // Aktualizuj pojazd
         public async Task<Vehicle> UpdateVehicleAsync(int vehicleId, VehicleDto dto) {
             try {
-                var vehicle = new Vehicle() {
-                    Model = dto.Model,
-                    Year = dto.Year,
-                    Color = dto.Color,
-                    GearboxID = dto.GearboxID,
-                    Mileage = dto.Mileage,
-                    EngineID = dto.EngineID,
-                    SeatingCapacity = dto.SeatingCapacity,
-                    BodyType = dto.BodyType,
-                    VIN = dto.VIN,
-                    Price = dto.Price,
-                    VehicleTypeID = dto.VehicleTypeID
-                };
-
-                var jsonContent = JsonConvert.SerializeObject(vehicle);
+                var jsonContent = JsonConvert.SerializeObject(dto);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
                 var response = await _httpClient.PutAsync($"{_url}vehicle/{vehicleId}", content);

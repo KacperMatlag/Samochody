@@ -1,65 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="Samochody.MainPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Samochody.MainPage"
+             Title="Lista pojazdów">
 
-    <ContentPage Title="Strona głowna">
-        <ListView x:Name="CarList"
-                  IsPullToRefreshEnabled="True"
-                  ItemSelected="CarList_ItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding DisplayText}"
-                              Detail="{Binding Year}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ContentPage>
-    <ContentPage Title="Edycja">
-        <FlexLayout Direction="Column"
-                    x:Name="Formularz"
-                    Margin="10">
-            <Label Text="Model" />
-            <Entry x:Name="Model" />
-            <Label Text="Rok" />
-            <Entry Keyboard="Numeric"
-                   x:Name="Rok" />
-            <Label Text="Kolor" />
-            <Entry x:Name="Kolor" />
-            <Label Text="Przebieg" />
-            <Entry x:Name="Przebieg"
-                   Keyboard="Numeric" />
-            <Label Text="Ilosc miejsc" />
-            <Entry x:Name="IloscMiejs"
-                   Keyboard="Numeric" />
-            <Label Text="Nadwozie" />
-            <Entry x:Name="Nadwozie" />
-            <Label Text="Cena" />
-            <Entry x:Name="Cena" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Dodaj" x:Name="AddVehicle" Clicked="AddVehicle_Clicked"/> 
+    </ContentPage.ToolbarItems>
 
-            <Picker x:Name="Silnik"
-                    Title="Wybierz silnik" />
-            <Picker x:Name="TypPojazdu"
-                    Title="Rodzaj pojazdu" />
+    <ListView x:Name="CarList"
+              IsPullToRefreshEnabled="True"
+              ItemSelected="CarList_ItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding DisplayCarInfo}"
+                          Detail="{Binding Year}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 
-            <Button Text="Usun"
-                    x:Name="Usun"
-                    Clicked="Usun_Clicked"
-                    BackgroundColor="red"
-                    TextColor="White" />
-            <Button x:Name="Anuluj"
-                    Text="Anuluj"
-                    Clicked="Anuluj_Clicked"
-                    BackgroundColor="LightBlue"
-                    TextColor="White" />
-            <Button Text="Wykonaj"
-                    x:Name="Wykonaj"
-                    Clicked="Dodaj_Clicked"
-                    Background="green"
-                    TextColor="White" />
-        </FlexLayout>
-    </ContentPage>
-
-
-
-</TabbedPage>
+</ContentPage>

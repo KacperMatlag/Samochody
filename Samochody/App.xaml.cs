@@ -5,11 +5,19 @@ using Xamarin.Forms.Xaml;
 
 namespace Samochody {
     public partial class App :Application {
-        public static ApiService Service=new ApiService();
+        private static ApiService ApiService = null;
+        public static ApiService Service {
+            get {
+                if(ApiService == null)
+                    ApiService = new ApiService();
+                return ApiService;
+            }
+        }
+
         public App() {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart() {

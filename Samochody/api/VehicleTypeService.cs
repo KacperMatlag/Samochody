@@ -48,11 +48,7 @@ namespace api.Services {
         // Dodaj nowy typ pojazdu
         public async Task<VehicleType> CreateVehicleTypeAsync(VehicleTypeDto dto) {
             try {
-                var vehicleType = new VehicleType() {
-                    Name = dto.Name,
-                };
-
-                var jsonContent = JsonConvert.SerializeObject(vehicleType);
+                var jsonContent = JsonConvert.SerializeObject(dto);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
                 var response = await _httpClient.PostAsync($"{_url}vehicleType", content);
@@ -69,11 +65,7 @@ namespace api.Services {
         // Zaktualizuj typ pojazdu
         public async Task<VehicleType> UpdateVehicleTypeAsync(int vehicleTypeId, VehicleTypeDto dto) {
             try {
-                var vehicleType = new VehicleType() {
-                    Name = dto.Name,
-                };
-
-                var jsonContent = JsonConvert.SerializeObject(vehicleType);
+                var jsonContent = JsonConvert.SerializeObject(dto);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
                 var response = await _httpClient.PutAsync($"{_url}vehicleType/{vehicleTypeId}", content);
