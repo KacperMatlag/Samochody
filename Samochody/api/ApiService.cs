@@ -11,14 +11,16 @@ namespace Samochody.api {
         private const string _baseUrl = "http://10.0.2.2:5204/api/";
         public ApiService() {
             _httpClient = new HttpClient {
-                Timeout = TimeSpan.FromSeconds(30)
+                Timeout = TimeSpan.FromSeconds(30),
             };
             Engine = new EngineService(_httpClient, _baseUrl);
             VehicleService = new VehicleService(_httpClient, _baseUrl);
             VehicleTypeService=new VehicleTypeService(_httpClient, _baseUrl);
+            GearboxService=new GearboxService(_httpClient, _baseUrl);
         }
         public EngineService Engine { get; }
         public VehicleService VehicleService { get; }
         public VehicleTypeService VehicleTypeService { get; }
+        public GearboxService GearboxService { get; set; }
     }
 }

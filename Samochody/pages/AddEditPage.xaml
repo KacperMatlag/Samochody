@@ -29,6 +29,9 @@
                     Title="Wybierz silnik" />
             <Picker x:Name="TypPojazdu"
                     Title="Rodzaj pojazdu" />
+            <Picker x:Name="SkrzyniaBiegow"
+                    Title="Skrzynia biegow" />
+
 
             <Button Text="Usun"
                     x:Name="Usun"

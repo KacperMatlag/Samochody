@@ -17,6 +17,6 @@
         public int VehicleTypeID { get; set; }
         public VehicleType VehicleType { get; set; } = null;
 
-        public string DisplayCarInfo => $"{Model} - {Color} - {BodyType}";
+        public string DisplayCarInfo => $"{Model} - {Color} - {BodyType} - {Gearbox.DisplayGearboxInfo}";
     }
 }

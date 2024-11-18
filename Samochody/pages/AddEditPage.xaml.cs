@@ -48,9 +48,13 @@ namespace Samochody.pages {
             TypPojazdu.ItemsSource = await App.Service.VehicleTypeService.GetAllVehicleTypesAsync();
             TypPojazdu.ItemDisplayBinding = new Binding("Name");
 
+            SkrzyniaBiegow.ItemsSource=await App.Service.GearboxService.GetAllGearboxesAsync();
+            SkrzyniaBiegow.ItemDisplayBinding = new Binding("DisplayGearboxInfo");
+
             if(vehicle!=null) {
                 Silnik.SelectedItem = Silnik.ItemsSource.Cast<Engine>().FirstOrDefault(engine => engine.EngineID == vehicle.EngineID);
                 TypPojazdu.SelectedItem = TypPojazdu.ItemsSource.Cast<VehicleType>().FirstOrDefault(vt => vt.VehicleTypeID == vehicle.VehicleTypeID);
+                SkrzyniaBiegow.SelectedItem = SkrzyniaBiegow.ItemsSource.Cast<Gearbox>().FirstOrDefault(g => g.GearboxID == vehicle.GearboxID);
             }
         }
         private async void Dodaj_Clicked(object sender, EventArgs e) {
@@ -64,7 +68,7 @@ namespace Samochody.pages {
                 SeatingCapacity = int.Parse(IloscMiejs.Text),
                 Year = int.Parse(Rok.Text),
                 EngineID = (Silnik.SelectedItem as Engine).EngineID,
-                GearboxID = 1,
+                GearboxID = (SkrzyniaBiegow.SelectedItem as Gearbox).GearboxID,
                 VehicleTypeID = (TypPojazdu.SelectedItem as VehicleType).VehicleTypeID,
             };
 
@@ -99,7 +103,7 @@ namespace Samochody.pages {
                 BodyType = Nadwozie.Text,
                 Price = decimal.Parse(Cena.Text),
                 EngineID = (Silnik.SelectedItem as Engine).EngineID,
-                GearboxID = 1,
+                GearboxID = (SkrzyniaBiegow.SelectedItem as Gearbox).GearboxID,
                 VehicleTypeID = (TypPojazdu.SelectedItem as VehicleType).VehicleTypeID
             };
 

@@ -3,5 +3,7 @@
         public int GearboxID { get; set; }
         public string Type { get; set; } = null;
         public int Speeds { get; set; }
+        public string DisplayGearboxInfo => $"Rodzaj: {Type} - {Speeds} przelozen";
+
     }
 }
